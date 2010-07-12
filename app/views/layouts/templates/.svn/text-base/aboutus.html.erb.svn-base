@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title><%= page_title %></title>
+    <%= yield :html_head %>
+	<link href="/stylesheets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body style="margin: 0; padding: 0; text-align: center;">
+    <%= cms_toolbar %>
+    <div id="wrapper" class="page">
+    	<div class="contentDiv">
+    		<%=render :partial=>'/layouts/templates/headerlinks'%>
+    	<div class="header">
+			<%=render :partial=>'/layouts/templates/menu'%>
+		</div><div class="clear"></div>	
+		<div class="mainleftdiv">
+		   <div class="logo">
+	  			<a href="#"><img src="/images/aboutneo11.jpg" alt="Neovasolution BCMS" /></a>
+			</div><div class="clear"></div>
+		  <div class="abtUS">
+				<p>Neova Solutions is a fast growing professional Web and Mobile Application Development Services Company with offices in Santa Clara, California and Pune, India.</p>
+				<p>Neova has proven expertise and a deep domain understanding of technology to deliver software engineering services such as Software Product Development (Web, Mobile), Rapid Prototyping, Software Testing and Product Support and Maintenance to enterprises spread across the globe.</p>
+				<p>Neova is also committed to building lasting strategic partnerships either as a Professional Services Partner or Software Services Partner with businesses or independent consultants ensuring complete satisfaction and measurable business results.</p>
+				<p>We work with our customers to help them deliver best in class products and services utilizing the latest in technology with reliability and predictability at the same time helping to minimize the over all product engineering cost.</p>
+				<p>Our customers range from early stage startups to small/mid sized companies that are looking for a reliable and stable outsourcing partner. Our management team has first hand experience of working with and managing an offshore operation while working for multi-nationals in the US.</p>
+				<p>We pride in a long standing relationship with our customers based on mutual trust and complete transparency. We have competency in Web and Mobile Application development with technical expertise in tools like Ruby on Rails, LAMP, Java/J2EE, Alpha Software, XML/XSLT, HTML/XHTML/CSS, Flash and CMS based systems like Joomla, Drupal and WordPress. On the mobile front we have expertise in building applications for Blackberry, Windows Mobile and iPhone devices</p>
+			</div>
+			<%= container :main %>
+		</div>
+		
+		<div class="mainrightdiv">
+			<%= render_portlet "Event List Portlet" %>
+		</div><div class="clear"></div>	
+		</div>
+		<%=render :partial=>'/layouts/templates/footer'%>
+    </div><div class="clear"></div>	
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<h1>New video</h1>
+<% form_for (@video,:url => {:controller => "/upload_vedio"}) do |f| %>
+  <%= f.error_messages %>
+   <p>
+    <%= f.label :video_url %><br />
+    <%= f.text_field :video_url %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

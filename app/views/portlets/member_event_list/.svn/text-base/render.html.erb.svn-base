@@ -1,0 +1,30 @@
+<%if @event_joined.size>0%>
+	<div class="myEventListTitle">My Events</div>
+<%else%>
+	<div class="myEventListTitle">No Event Found</div>
+<%end%>
+<div class="clear"></div>
+<%cnt=0%>
+<div style="border:1px solid;">
+	<%@event_joined.each do |event_joined|%>
+	<%event=event_joined.event%>
+		<%cnt+=1%>
+		<div class="memberEvents">
+			<table>
+				<tr><td colspan="2"><%=cnt%>) <%= link_to event.name, "/event-details?id=#{event.id}" %></td></tr>
+				<tr><td class="eventLabel">Start Date:</td> <td><%=format_date(event.starts_on)%></td></tr>
+				<tr><td class="eventLabel">End Date:</td> <td><%=format_date(event.ends_on)%></td></tr>
+				<tr><td class="eventLabel">Description:</td><td><%=h truncate(event.description, 50)%></td></tr>
+				<tr><td colspan="2">&nbsp;</td></tr>
+				<% if logged_in? and user_has_access_to_certificate(current_user.id,event.id) and event.ends_on.strftime('%Y-%m-%d') <= Time.now.strftime('%Y-%m-%d') %>
+				 <tr><td colspan="2" align="right"><%=link_to "Get Certificate","/event_certificate?id=#{event.id}"%></td></tr>
+				<%end%> 
+			</table>
+			<%if cnt!=@event_joined.length%>
+				<hr></hr>
+			<%end%>
+		</div>
+		<%end%>
+    </div>
+
+

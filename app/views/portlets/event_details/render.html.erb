@@ -1,0 +1,54 @@
+<div class="eventDetails">
+	<h1><%=h @event.name%>'s Details</h1>
+	<table>
+		<tr>
+			<td class="eventLabel">Start Date:</td>
+			<td><%=format_date(@event.starts_on)%></td>
+		</tr>
+		<%unless @event.ends_on.blank?%>
+			<tr>
+				<td class="eventLabel">End Date:</td>
+				<td><%=format_date(@event.ends_on)%></td>
+			</tr>
+		<%end%>
+		<%unless @event.description.blank?%>
+			<tr>
+				<td class="eventLabel">Description:</td>
+				<td><%=h @event.description%></td>
+			</tr>
+		<%end%>
+		<%unless @event.location.blank?%>
+			<tr>
+				<td class="eventLabel">Event Location:</td>
+				<td><%=h @event.location%></td>
+			</tr>
+		<%end%>
+		<%unless @event.contact_email.blank?%>
+			<tr>
+				<td class="eventLabel">Contact Email:</td>
+				<td><%=h @event.contact_email%></td>
+			</tr>
+		<%end%>
+		<%unless @event.more_info_url.blank?%>
+			<tr>
+				<td class="eventLabel">More Information:</td>
+				<td><%=h @event.more_info_url%></td>
+			</tr>
+		<%end%>
+			<tr><td colspan="2" rowspan="2" align="center">
+				<%if @event.ends_on.strftime('%Y-%m-%d') >= Time.now.strftime('%Y-%m-%d') %>
+				  <% if logged_in? %>
+				       <%if !member_is_event_attendee?(current_user.id,@event.id)%>
+				         <%=  link_to "Join Event", :controller => "/event_attendees", :action => "join_event", :event_id => @event.id %>
+					   <%end%> 
+					   <% if current_user.cms_access?%>
+					      &nbsp;&nbsp;<%= link_to "Members List", "/events/attendees_list?event_id=#{@event.id}"%>
+					 <%end%>  
+				  <%else%> 
+				    <%=  link_to "Join Event", "/members/login?event_id=#{@event.id}" %>
+				  <%end%>
+				<%end%> 
+				</td>
+			</tr>
+	</table>
+</div>

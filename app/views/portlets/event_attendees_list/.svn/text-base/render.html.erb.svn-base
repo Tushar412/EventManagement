@@ -1,0 +1,34 @@
+<div class="attendee_list">
+<div align="center">
+<%if @event_attendees.blank?%>
+ <div class="label_bold">No Member Joined<div class="clear"></div></div>
+<%else%>
+<div class="label_bold">Event Attendees for "<%=@event_attendees.first.event.name%>"<div class="clear"></div></div>
+<hr/>
+<%cnt=1%>
+  <% form_for (@event_attendees,:url => {:controller => "/update_attendees"}) do |f| %>
+		<%= hidden_field_tag :event_id, @event_attendees.first.event_id  %>
+		<%= hidden_field_tag :event_name, @event_attendees.first.event.name  %>
+		<table cellpadding="3" cellspacing="3">
+				<tr>
+					<th>Name</th>
+					<th>Has Attended</th>
+				</tr>
+				<%@event_attendees.each do |event_attendee|%>
+				<tr>
+					<td><%=cnt%>) <%= event_attendee.user.full_name %></td>
+				    <td align="center">
+				    	<%= check_box_tag "attendees_ids[]", event_attendee.user_id,(@event_attendee_array.include?(event_attendee.user_id)) %>
+				    </td>
+				</tr>
+				 <%cnt+=1%>
+	         <%end%>
+			       <tr><td colspan="2">&nbsp;</td></tr>
+			      <tr>
+	                <td colspan="2" align="center"><%=  submit_tag "Save", :class => "buttons" %></td>
+	             </tr>
+			</table>
+		  <%end%>
+     <%end%>
+</div>
+</div>

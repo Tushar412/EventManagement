@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title><%= page_title %></title>
+    <%= yield :html_head %>
+	<link href="/stylesheets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body style="margin: 0; padding: 0; text-align: center;">
+    <%= cms_toolbar %>
+    <div id="wrapper" class="page">
+    	<div class="contentDiv">
+    	    <%=render :partial=>'/layouts/templates/headerlinks'%>
+    	<div class="header">
+			<%=render :partial=>'/layouts/templates/menu'%>
+		</div><div class="clear"></div>	
+		<div class="mainleftdiv">
+		   <div class="logo">
+	  			<a href="#"><img src="/images/contactbanner.jpg" alt="Neovasolution BCMS" /></a>
+			</div><div class="clear"></div>
+		       <div class="abtUS">
+                    <p><b>Email us at: <a href="mailto:inquiry@neovasolutions.com">inquiry@neovasolutions.com</a></b></p>
+                    <h4>Neova: USA</h4>
+                      <p>
+                        <strong>Massachusetts</strong><br>
+                        One Broadway, 14th Floor<br>
+                        Cambridge, MA 02142<br>
+                        617-401-3322<br>
+                        <img src="images/fax.gif" alt="fax" title="fax"> 617-401-3718<br>
+                    </p>
+                      <p> 
+                        <strong>Georgia</strong><br>
+                        3551 Spring Creek Circle SW
+                        Snellville, GA 30039<br> 
+                        <img src="images/phone.gif" alt="phone" title="phone"> Tel: 770-558-2973 </p>
+                       <p> 
+                        <strong>California</strong><br>
+                        #3480, Granada Ave, #225
+                        Santa Clara, CA 95051<br>
+                        <img src="images/phone.gif" alt="phone" title="phone">&nbsp;408-355-8577 </p>
+                       <h4>Neova: India</h4>
+                       <p>
+                        <strong>Pune</strong><br>
+                        65, Hindustan Estates
+                        2nd Floor, Rishi Niwas, Lane#13,
+                        Kalyani Nagar  
+                        Pune - 411 006.<br>
+                        <img src="images/phone.gif" alt="phone" title="phone"> 020 - 40045747 </p>
+                      <div class="clearDiv"></div>
+  			    </div>
+			<%= container :main %>
+		</div>
+		
+		<div class="mainrightdiv">
+			<%= render_portlet "Event List Portlet" %>
+		</div><div class="clear"></div>	
+		</div>
+		<%=render :partial=>'/layouts/templates/footer'%>
+    </div><div class="clear"></div>	
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<div class="regdiv">
+	<% form_for (@membership_registration,:url => {:controller => "/membership_registrations"}) do |f| %>
+			<%= f.error_messages unless @is_new_record || @membership_registration.valid? %> 
+			<%= hidden_field_tag :user_id, params[:id]  %>
+			<%if params[:event_id]%>
+			  <%= hidden_field_tag :event_id, params[:event_id]  %>
+			<%end%>
+			<div class="memberRegistrationHeader">
+				Member Registration Form
+			</div><div class="clear"></div>
+			<div class="mainRegForm">
+				<table cellpadding="1" cellspacing="1" width="100%">
+					<tr>
+					  <td align="right"><%= f.label :login, "Username*",:class => 'label'%></td>
+	                  <td><%= f.text_field :login, :autocomplete => "off",:class => 'text' %></td>
+				   </tr>
+				    <tr>
+		              <td align="right"><%= f.label :email,"Email*",:class => 'label' %></td>
+	                  <td><%= f.text_field :email, :autocomplete => "off" ,:class => 'text'%></td>
+					</tr>	
+					<tr>
+					  <td align="right"><%= f.label :first_name, "First Name",:class => 'label' %></td>
+	                  <td><%= f.text_field :first_name, :autocomplete => "off" ,:class => 'text'%></td>
+					</tr>
+					<tr>
+					  <td align="right"><%= f.label :last_name, "Last Name" ,:class => 'label'%></td>
+	                  <td><%= f.text_field :last_name, :autocomplete => "off" ,:class => 'text'%></td>
+					</tr>
+					<% if params[:id].blank? %>
+						<tr>
+						  <td align="right"><%= f.label :password,"Password*",:class => 'label' %></td>
+		                  <td><%= f.password_field :password, :autocomplete => "off" ,:class => 'text'%></td>
+					  </tr>  
+					   <tr>
+						  <td align="right"><%= f.label :password_confirmation, "Confirm Password*" ,:class => 'label'%></td>
+		                  <td><%= f.password_field :password_confirmation, :autocomplete => "off" ,:class => 'text'%></td>
+					  </tr>
+				  <%end%>	  
+				  <tr><td colspan="2">&nbsp;</td></tr>
+					<tr>
+	                 <td colspan="2" align="center"><%=  submit_tag "Save", :class => "buttons" %></td>
+	              </tr>
+			 </table>
+		 </div>
+		<% end %>
+</div>		

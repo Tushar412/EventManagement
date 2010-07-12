@@ -1,0 +1,6 @@
+<div class="main-nav home">
+	<div class="left"><div class="right">
+		<%= render_menu  :page=>Page.first, :from_top=>0, :depth=>1%>
+	</div>
+</div>
+</div>

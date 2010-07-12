@@ -1,0 +1,28 @@
+<div class="upcomingEventLabel">
+<%if @archive_events.size>0%>
+	Past Events 
+<%else%>
+	No Past Events Found
+<%end%>
+</div><div class="clear"></div>
+<%cnt=1%>
+<div style="width:100%text-align:center;margin-top:10px;">
+	<%@archive_events.each do |event|%>
+		<div class="eventListColumn">
+			<table>
+				<tr><td colspan="2"><%=cnt%>) <%= link_to event.name, "/event-details?id=#{event.id}" %></td></tr>
+				<tr><td class="eventLabel">Start Date:</td> <td><%=format_date(event.starts_on)%></td></tr>
+				<tr><td class="eventLabel">End Date:</td> <td><%=format_date(event.ends_on)%></td></tr>
+				<tr><td class="eventLabel">Description:</td><td><%=h truncate(event.description, 50)%></td></tr>
+				<tr><td colspan="2" align="center">
+				<% if logged_in? and current_user.cms_access?%>
+					<%= link_to "Event Members List", "/events/attendees_list?event_id=#{event.id}"%>
+				<%end%></td></tr>
+			</table>
+			<hr></hr>
+		</div>
+	 <%cnt+=1%>
+	<%end%>
+</div><div class="clear"></div>
+
+

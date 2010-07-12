@@ -1,0 +1,37 @@
+<div class="logindiv">
+<div id="loginerror"><%= flash[:login_error] %></div>
+<% form_tag cms_login_path, :id => 'login' do %>
+<% if params[:event_id].blank?%>
+ <% @success_url = @failure_url = "/" %>
+<%else%>
+ <% @success_url =  "/event_attendees?event_id=#{params[:event_id]}" %>
+<%end%>
+<%= hidden_field_tag :success_url, @success_url %>
+<%= hidden_field_tag :failure_url, @failure_url %>
+<table cellpadding="0" cellspacing="" align="center" width="100%">
+	<tr>
+		<td colspan="2" align="center" width="50%"><h1><label class="label">Log-in</label></h1></td>
+	</tr>
+	 <tr>
+		<td align="center"><b><%= label_tag :login ,"Username*",:class => 'label'%></b></td>
+		<td><%= text_field_tag :login, @login, :class => 'text'%></td>
+	</tr>
+	<tr>
+		<td align="center"><b><%= label_tag :password ,"Password*",:class => 'label'%></b></td>
+		<td><%= password_field_tag :password ,nil,:class => 'text'%></td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td align="right">
+		 <button  type="submit" class="buttons">Log in</button>&nbsp;
+	    <% if params[:event_id].blank?%>	
+	     <%= link_to "New Registration", "/members/member-registration" %>
+	   <%else%>
+	     <%= link_to "New Registration", "/members/member-registration?event_id=#{params[:event_id]}" %>
+	   <%end%> 
+	   </td>
+	</tr>
+</table>
+  <% end %>
+</div>

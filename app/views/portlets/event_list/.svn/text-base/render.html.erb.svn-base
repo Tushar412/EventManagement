@@ -1,0 +1,33 @@
+<div class="upcomingEventLabel">
+<%if @events.size>0%>
+	Public Event List
+<%else%>
+	No Upcoming Event Found
+<%end%>
+</div><div class="clear"></div>
+<%cnt=1%>
+<div style="width:100%text-align:center;margin-top:10px;">
+	<%@events.each do |event|%>
+		<%unless params[:all].blank?%>	
+			<div class="eventListColumn">
+		<%else%>
+			<div class="eventList">
+		<%end%>
+		   <hr></hr>
+			<table>
+				<tr><td colspan="2"><%=cnt%>) <%= link_to event.name, "/event-details?id=#{event.id}" %></td></tr>
+				<tr><td class="eventLabel">Start Date:</td> <td><%=format_date(event.starts_on)%></td></tr>
+				<tr><td class="eventLabel">End Date:</td> <td><%=format_date(event.ends_on)%></td></tr>
+				<tr><td class="eventLabel">Description:</td><td><%=h truncate(event.description, 50)%></td></tr>
+				<tr><td colspan="2" align="right"><% if logged_in? and current_user.cms_access?%><%= link_to "Event Members List", "/events/attendees_list?event_id=#{event.id}"%><%end%></td></tr>
+			</table>
+			
+		</div>
+		
+		<%cnt+=1%>
+	<%end%>
+</div><div class="clear"></div>
+<%if params[:all].blank? and @view_all_link%>
+	<%= link_to "View All", "/show-all-events?all=1"%>
+<%end%>
+

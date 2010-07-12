@@ -1,0 +1,19 @@
+<%if @videos.size>0%>
+	<h1>My Video List</h1>
+<%else%>
+	<h1>No Upcoming Event Found<h1>
+<%end%>
+
+<table>
+ <% @videos.each do |video| %>
+   <%youtube_video_id=video.video_id%>
+  <tr>
+  	<td><img src="http://img.youtube.com/vi/<%=youtube_video_id%>/2.jpg"><td>
+    <td><%= link_to 'Show', "/members/show-video?id=#{video.id}" %></td>
+    <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'Add New video', "/members/upload-video" %>&nbsp;
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title><%= page_title %></title>
+    <%= yield :html_head %>
+	<link href="/stylesheets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body style="margin: 0; padding: 0; text-align: center;">
+    <%= cms_toolbar %>
+	 <div id="wrapper" class="page">
+	 	<div class="contentDiv">
+    	<%=render :partial=>'/layouts/templates/headerlinks'%>
+    	<div class="header">
+    		<% if flash[:notice] %>
+              <div class="notice"><%= flash[:notice] %></div>
+            <% end %>
+			<%=render :partial=>'/layouts/templates/menu'%>
+		</div><div class="clear"></div>	
+		<div class="mainleftdiv">
+		   <div class="logo">
+	  			<a href="#"><img src="/images/about-neova.jpg" alt="Neovasolution BCMS" /></a>
+			</div><div class="clear"></div>
+		    <div class="abtUS">
+		    	<h3>Event Management Application</h3>
+				<hr/>
+				<p>This is an Event Management application. The Application is used to create events, show case events, manage event turn ups etc. </p>
+ 				<p>Events in the application are created and managed by the Site Administrator only.</p>
+				<p>All visitors to the site can view all the events that are on going and upcoming. The visitor can be a guest user or a registered user of the site. Visitors can join any event that has been listed on the site. If a guest user wants to join an event, the user will have to register with the system. Registration to the system is free of cost.</p>
+				<p>Every registered user has their own profile page having personal information and the events that they are currently associated with. They can edit their profile information.</p>
+				<p>The Site Administrator also manages the attendance of the users who attended an Event. User's who actually attended the event can get a certificate which they can download and print it.</p>
+			</div>
+			 <%= container :main %>
+		</div>
+		
+		<div class="mainrightdiv">
+			<%= render_portlet "Event List Portlet" %>
+		</div><div class="clear"></div>
+		</div>
+		<%=render :partial=>'/layouts/templates/footer'%>
+    </div><div class="clear"></div>	
+  </body>
+</html>

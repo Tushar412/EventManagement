@@ -1,0 +1,13 @@
+<p>
+  <b>Video url:</b>
+  <%=h @video.video_url %>
+   <%youtube_video_id=@video.video_id%>
+   <div id="youtube_video" class="youtube_video">
+      <object width="425" height="355">
+        <param name="movie" value="http://www.youtube.com/v/<%=youtube_video_id%>=en"></param>
+        <param name="wmode" value="transparent"></param>
+        <embed src="http://www.youtube.com/v/<%=youtube_video_id%>&hl=en" type="application/x-shockwave-flash" wmode="transparent" width="425" height="355"></embed>
+    </object>
+</div>
+</p>
+<%= link_to "Back", "/members/profile" %>

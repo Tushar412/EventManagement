@@ -1,0 +1,10 @@
+   <div align="right">
+		<% if logged_in? %>
+		   <p>Welcome, <%= current_user.login %> <%unless current_user.cms_access?%><%= link_to "[ Logout ]", cms_logout_path %><%end%></p>
+		   <p><%= link_to "[ My Profile ]", "/members/profile" %>&nbsp;<%if current_user.cms_access?%><%= link_to "[ Past Events ]", "/events/archive_events" %><%end%></p>
+		<% else %>
+			<p><%= link_to "[ Login ]", "/members/login" %>&nbsp;
+			<%= link_to "[ Sign Up ]", "/members/member-registration" %></p>
+		<% end %>
+	</div>
+
